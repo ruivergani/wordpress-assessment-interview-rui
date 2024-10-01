@@ -149,3 +149,22 @@ function create_movie_post_type() {
     register_post_type( 'movie', $args );
 }
 add_action( 'init', 'create_movie_post_type', 0 );
+
+// Register Custom Taxonomy Genre
+function create_genre_taxonomy() {
+    $labels = array(
+        'name'              => _x( 'Genres', 'taxonomy general name', 'text_domain' ),
+        'singular_name'     => _x( 'Genre', 'taxonomy singular name', 'text_domain' ),
+    );
+    $args = array(
+        'hierarchical'      => true,
+        'labels'            => $labels,
+        'show_ui'           => true,
+        'show_admin_column' => true,
+        'query_var'         => true,
+        'rewrite'           => array( 'slug' => 'genre' ),
+    );
+    register_taxonomy( 'genre', array( 'movie' ), $args );
+}
+add_action( 'init', 'create_genre_taxonomy', 0 );
+
