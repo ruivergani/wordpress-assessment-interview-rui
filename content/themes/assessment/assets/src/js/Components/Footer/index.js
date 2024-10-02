@@ -12,8 +12,13 @@ import {
   FooterDetails,
   FooterContact,
   FooterBottomContainer,
-  FooterSocials
- } from './styles';
+  FooterSocials,
+  FooterLogo,
+  FooterContent,
+  FooterColumn,
+  FooterLinksContainer
+} from './styles';
+import { NavLink } from 'react-router-dom';
 import { EnvelopeSimpleOpen, PhoneOutgoing, EnvelopeSimple} from 'phosphor-react';
 // Images
 import Iconfacebook from '../../../../images/logos/facebook.svg';
@@ -21,6 +26,7 @@ import IconTwitter from '../../../../images/logos/twitter.svg';
 import IconInstagram from '../../../../images/logos/instagram.svg';
 import IconLinkedIn from '../../../../images/logos/linkedin.svg';
 import IconYouTube from '../../../../images/logos/youtube.svg';
+import logoLawnStarter from '../../../../images/logos/lawnstarter.svg';
 
 const Footer = () => {
   return (
@@ -43,9 +49,42 @@ const Footer = () => {
         </FooterCTA>
       <FooterBottom>
         <FooterBottomContainer>
-          <div>
-
-          </div>
+          <FooterContent>
+            <FooterLogo>
+              <NavLink to='/'>
+                <img src={logoLawnStarter} alt="Logo Lawn Starter" title="Logo Lawn Starter"/>
+              </NavLink>
+            </FooterLogo>
+            <FooterLinksContainer>
+              <FooterColumn>
+                <h4>Company</h4>
+                <ul>
+                  <li><NavLink to="/">About Us</NavLink></li>
+                  <li><NavLink to="/">Our Blog</NavLink></li>
+                  <li><NavLink to="/">Order Services</NavLink></li>
+                  <li><NavLink to="/">FAQ</NavLink></li>
+                  <li><NavLink to="/">Lawn Care Near Me</NavLink></li>
+                </ul>
+              </FooterColumn>
+              <FooterColumn>
+                <h4>Services</h4>
+                <ul>
+                  <li><NavLink to="/">Bush Trimming</NavLink></li>
+                  <li><NavLink to="/">Landscaping</NavLink></li>
+                  <li><NavLink to="/">Lawn Care</NavLink></li>
+                  <li><NavLink to="/">Lawn Treatment</NavLink></li>
+                  <li><NavLink to="/">Leaf Removal</NavLink></li>
+                </ul>
+              </FooterColumn>
+              <FooterColumn>
+                <h4>Providers</h4>
+                <ul>
+                  <li><NavLink to="/">Scholarship</NavLink></li>
+                  <li><NavLink to="/">LawnStarter for Providers</NavLink></li>
+                </ul>
+              </FooterColumn>
+            </FooterLinksContainer>
+          </FooterContent>
           <FooterDetails>
             <FooterSocials>
               <p>Check our social media</p>
