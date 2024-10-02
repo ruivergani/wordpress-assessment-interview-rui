@@ -197,7 +197,7 @@ const SingleComponentBodyText = styled.div`
   }
 `;
 
-export const SinglePost = () => {
+export const SingleMoviePost = () => {
   const { slug } = useParams(); // Get post slug from the URL
   const [post, setPost] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -246,6 +246,7 @@ export const SinglePost = () => {
             </SingleComponentText>
             <SingleComponentBody>
               {featuredImage && <img src={featuredImage} alt={post.title.rendered} />}
+
               <SingleComponentBodyText dangerouslySetInnerHTML={{ __html: post.content.rendered }} />
             </SingleComponentBody>
           </SingleComponent>
@@ -253,4 +254,4 @@ export const SinglePost = () => {
       </PostSingleContainer>
     </PostSingleComponent>
   );
-};
+}

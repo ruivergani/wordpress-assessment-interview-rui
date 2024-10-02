@@ -3,7 +3,7 @@ import DOMPurify from 'dompurify';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { useEffect, useState } from 'react';
-import { fetchPosts } from '../../services/api';
+import { fetchPostById } from '../../services/api';
 
 // Define Styled Components
 const HomeComponent = styled.div`
@@ -61,10 +61,10 @@ const LoadingContainer = styled.div`
   align-items: center;
   justify-content: center;
   @media (max-width: 1400px) {
-    padding: 0px 25px;
+    padding: 30px 25px;
   }
   @media (max-width: 576px) {
-    padding: 0px 15px;
+    padding: 30px 15px;
   }
 `;
 const NoPostsContainer = styled.div`
@@ -78,10 +78,10 @@ const NoPostsContainer = styled.div`
   align-items: center;
   justify-content: center;
   @media (max-width: 1400px) {
-    padding: 0px 25px;
+    padding: 30px 25px;
   }
   @media (max-width: 576px) {
-    padding: 0px 15px;
+    padding: 30px 15px;
   }
 `;
 const SectionHero = styled.div`
@@ -204,9 +204,10 @@ export const Home = () => {
   useEffect(() => {
     const getWelcomePost = async () => {
       try {
-        const Allposts = await fetchPosts();
-        if (Allposts.length > 0) { // if exists or not
-          setPost(Allposts[0]);
+        // Fetch the post with ID 1 (Welcome Post)
+        const fetchedPost = await fetchPostById(1);
+        if (fetchedPost) {
+          setPost(fetchedPost);
         } else {
           setPost(null);
         }
@@ -215,9 +216,9 @@ export const Home = () => {
         console.error('Error when fetching welcome post', error);
         setLoading(false);
       }
-    }
+    };
     getWelcomePost();
-  }, [])
+  }, []);
 
   // Loading Validation
   if (loading) {
@@ -246,7 +247,8 @@ export const Home = () => {
     <HomeComponent>
       <HomeContainer>
         <SectionHero>
-          <PostComponent to={`/post/${post.id}`}>
+          {/* Using post.slug instead of post.id for navigation */}
+          <PostComponent to={`/post/${post.slug}`}>
             {/* Display featured image if available */}
             <div className='img'>
               {featuredImage && <img src={featuredImage} alt={post.title.rendered} />}
