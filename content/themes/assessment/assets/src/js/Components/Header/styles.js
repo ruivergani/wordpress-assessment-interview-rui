@@ -9,6 +9,9 @@ export const HeaderComponent = styled.header`
   background-color: #F3F3F5;
   transition: all .3s ease-in-out;
   border-bottom: 1px solid #F5F5F5;
+  @media (max-width: 991px) {
+    padding: 20px 0px;
+  }
 `
 export const HeaderContainer = styled.div`
   width: 100%;
@@ -29,19 +32,29 @@ export const HeaderContainer = styled.div`
   img{
     width: 100%;
     max-width: 198px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @media (max-width: 991px) {
+      max-width: 150px;
+    }
   }
 `;
 export const HeaderLogo = styled.div`
   width: 100%;
   max-width: 250px;
-
+  @media (max-width: 991px) {
+    max-width: 200px;
+  }
 `;
-
 export const HeaderNavigation = styled.div`
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
+  @media (max-width: 991px) {
+    display: none; /* Hide navigation on mobile */
+  }
 `;
 export const HeaderButtonsComponent = styled.div`
   width: 100%;
@@ -50,6 +63,9 @@ export const HeaderButtonsComponent = styled.div`
   align-items: center;
   justify-content: center;
   gap: 20px;
+  @media (max-width: 576px) {
+    display: none; /* Hide navigation on mobile */
+  }
 `;
 export const SearchContainer = styled.div`
   position: relative;
@@ -64,6 +80,9 @@ export const SearchContainer = styled.div`
   box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.10);
   padding: 0px 20px;
   border: 1px solid #FFF;
+  @media (max-width: 991px) {
+    display: none; /* Hide navigation on mobile */
+  }
 `;
 export const SearchInput = styled.input`
   padding: 13px 0px;
@@ -122,4 +141,49 @@ export const ButtonCTA = styled.button`
       color: #067042;
     }
   }
+  @media (max-width: 991px) {
+    display: none; /* Hide navigation on mobile */
+  }
+`;
+export const HamburgerMenu = styled.button`
+  display: none;
+
+  @media (max-width: 991px) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer; /* Hamburger menu will be clickable */
+  }
+`;
+export const MobileMenu = styled.div`
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  width: 100%;
+  background-color: #F5F5F5;
+  z-index: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 20px 0px;
+  ul{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    li{
+      a {
+        padding: 10px 20px;
+        text-align: center;
+        color: #067042;
+        text-decoration: none !important;
+        &:hover {
+          background-color: #EAEAEA;
+        }
+      }
+    }
+  }
+
 `;

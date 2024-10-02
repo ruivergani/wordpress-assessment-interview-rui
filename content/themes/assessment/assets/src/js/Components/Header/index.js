@@ -1,12 +1,32 @@
+import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Navigation } from '../Nav/index';
-import { HeaderComponent, HeaderContainer, HeaderNavigation, SearchContainer, SearchInput,SearchIcon,  HeaderCTA, ButtonCTA, HeaderButtonsComponent, HeaderLogo} from './styles';
-import { EnvelopeSimple, MagnifyingGlass } from 'phosphor-react';
+import {
+  HeaderComponent,
+  HeaderContainer,
+  HeaderNavigation,
+  SearchContainer,
+  SearchInput,
+  SearchIcon,
+  HeaderCTA,
+  ButtonCTA,
+  HeaderButtonsComponent,
+  HeaderLogo,
+  HamburgerMenu,
+  MobileMenu
+} from './styles';
+import { EnvelopeSimple, MagnifyingGlass, List } from 'phosphor-react';
 
 // Images
 import logoLawnStarter from '../../../../images/logos/lawnstarter.svg';
 
 const Header = () => {
+
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen((prev) => !prev); // Toggle mobile menu state
+  }
+
   return (
     <HeaderComponent>
       <HeaderContainer>
@@ -16,7 +36,7 @@ const Header = () => {
           </NavLink>
         </HeaderLogo>
         <HeaderNavigation>
-          <Navigation/>
+          <Navigation />
         </HeaderNavigation>
         <HeaderButtonsComponent>
           <SearchContainer>
@@ -35,10 +55,19 @@ const Header = () => {
             </ButtonCTA>
           </HeaderCTA>
         </HeaderButtonsComponent>
-        <div>
-
-        </div>
+        <HamburgerMenu onClick={toggleMobileMenu}>
+          <List size={32} />
+        </HamburgerMenu>
       </HeaderContainer>
+
+      {/* Mobile Menu */}
+      {
+        isMobileMenuOpen && (
+          <MobileMenu>
+            <Navigation closeMenu={toggleMobileMenu}/>
+          </MobileMenu>
+        )
+      }
     </HeaderComponent>
   );
 };
