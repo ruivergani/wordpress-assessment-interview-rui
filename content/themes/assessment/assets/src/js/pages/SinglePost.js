@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { fetchPostBySlug } from '../../services/api';
 import styled from 'styled-components';
+import { Calendar, Alarm} from 'phosphor-react';
 
 // Define Styled Components
 const PostSingleComponent = styled.div`
@@ -95,17 +96,19 @@ const SingleComponent = styled.div`
   max-width: 850px;
 `
 const SingleComponentText = styled.div`
-  margin-bottom: 78px;
+  margin-bottom: 58px;
   h1{
     color: #140D30;
     font-family: "Roboto", sans-serif;
     font-size: 40px;
     font-weight: 600;
-    line-height: 48px;
+    line-height: 130%;
   }
   @media (max-width: 991px){
+    margin-bottom: 30px;
     h1{
       font-size: 32px;
+      text-align: center;
     }
   }
   @media (max-width: 991px){
@@ -114,6 +117,36 @@ const SingleComponentText = styled.div`
     }
   }
 `
+const SingleComponentTextList = styled.ul`
+  margin-top: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 17px;
+  li{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    color: #433E59;
+    font-family: "Roboto", sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    &:not(:last-child){
+      border-right: 1px solid rgba(161, 158, 172, 0.40);
+      padding-right: 15px;
+    }
+  }
+  @media (max-width: 991px){
+    li{
+      &:not(:last-child){
+        border-right: 0px;
+      }
+    }
+    flex-direction: column;
+  }
+`;
 const SingleComponentBody = styled.div`
   img{
     width: 100%;
@@ -122,6 +155,16 @@ const SingleComponentBody = styled.div`
     max-width: 850px;
     object-fit: cover;
     border-radius: 10px;
+  }
+  @media (max-width: 991px){
+    img{
+      max-height: 350px;
+    }
+  }
+  @media (max-width: 576px){
+    img{
+      max-height: 200px;
+    }
   }
 `
 const SingleComponentBodyText = styled.div`
@@ -243,6 +286,20 @@ export const SinglePost = () => {
           <SingleComponent>
             <SingleComponentText>
               <h1>{post.title.rendered}</h1>
+              <SingleComponentTextList>
+                <li>
+                  <Calendar size={20} weight="duotone" />
+                  {new Date(post.date).toLocaleDateString()}
+                </li>
+                <li>
+                  <Alarm size={20} weight="duotone" />
+                  Read time:&nbsp;
+                  {Math.ceil(post.content.rendered.split(' ').length / 200)} min read
+                </li>
+                <li>
+                  Last updated on: {new Date(post.modified).toLocaleDateString()}
+                </li>
+              </SingleComponentTextList>
             </SingleComponentText>
             <SingleComponentBody>
               {featuredImage && <img src={featuredImage} alt={post.title.rendered} />}
