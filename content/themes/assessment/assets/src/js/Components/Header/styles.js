@@ -8,7 +8,7 @@ export const HeaderComponent = styled.header`
   z-index: 1000;
   background-color: #F3F3F5;
   transition: all .3s ease-in-out;
-  border-bottom: 1px solid #F5F5F5;
+  border-bottom: 1px solid #ededed;
   @media (max-width: 991px) {
     padding: 20px 0px;
   }

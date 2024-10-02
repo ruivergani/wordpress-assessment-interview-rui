@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import backgroundImage from '../../../../images/bg/bgFooter.svg';
 
 export const FooterComponent = styled.div`
-  padding-top: 100px;
+  
 `
 export const FooterContainerCTA = styled.div`
   width: 100%;

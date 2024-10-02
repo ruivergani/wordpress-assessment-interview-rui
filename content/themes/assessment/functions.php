@@ -144,6 +144,12 @@ function enable_gzip_compression() {
 // Hooks the enable_gzip_compression function to run after the theme is set up, enabling GZIP compression.
 add_action( 'after_setup_theme', 'enable_gzip_compression' );
 
+// Enable featured images for posts
+function enable_featured_images_for_posts() {
+    add_theme_support( 'post-thumbnails' );
+}
+add_action( 'after_setup_theme', 'enable_featured_images_for_posts' );
+
 // Register Custom Post Type Movie
 function create_movie_post_type() {
     $labels = array(
