@@ -21,7 +21,7 @@ Visit our [README](../README.md#Setup) for setup instructions.
 ### Create App
 - [X] Create a React app with a standard header w/ nav linking to pages, a standard footer, which talks to WordPress REST API. Create the following page in the React app:
   - [X] Home page - Should show the "Welcome" post only + a link to "Movie" Page
-  - [ ] Movie page - Should show the 3 "Movie" Posts
+  - [X] Movie page - Should show the 3 "Movie" Posts
     - Each post should have a featured image, an excerpt and a link to the movie single post page.
     - Bonus points: infinite scroll or pagination.
 - [X] Add SCSS compiling in and style your React app.

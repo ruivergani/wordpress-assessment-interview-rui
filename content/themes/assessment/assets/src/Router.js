@@ -19,7 +19,8 @@ export function Router(){
         <Route path="/post/:slug" element={<SinglePost />} />
         <Route path="/:slug" element={<SinglePost />} />
         {/* Route for Single Movie Post by ID */}
-        <Route path="/movie/:id" element={<SingleMoviePost />} />
+        <Route path="/movie/:slug" element={<SingleMoviePost />} />
+        <Route path="/movies/:slug" element={<SingleMoviePost />} />
         {/* Catch-all route for undefined paths (404 page) */}
         <Route path="*" element={<NotFound />} />
       </Route>

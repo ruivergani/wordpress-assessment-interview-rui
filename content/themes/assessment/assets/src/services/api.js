@@ -18,15 +18,21 @@ export const fetchPostBySlug = async (slug) => {
 };
 
 export const fetchMovies = async () => {
-  const response = await fetch(`${API_URL}/movie`);
-  return response.json();
+  const response = await fetch(`${API_URL}/movie?_embed`);
+  if (!response.ok) {
+    throw new Error('Failed to fetch movies');
+  }
+  const data = await response.json();
+  // Check if data is an array, if not return an empty array
+  return Array.isArray(data) ? data : [];
 };
 
-// Fetch a single movie post by ID
-export const fetchSingleMoviePost = async (id) => {
-  const response = await fetch(`${API_URL}/movie/${id}?&_embed`);
+// Fetch a single movie post by Slug
+export const fetchSingleMoviePost = async (slug) => {
+  const response = await fetch(`${API_URL}/movie?slug=${slug}&_embed`);
   if (!response.ok) {
-    throw new Error('Failed to fetch movie post');
+    throw new Error('Failed to fetch movie');
   }
-  return response.json();
+  const movies = await response.json();
+  return movies.length > 0 ? movies[0] : null; // Return the first matching post
 };

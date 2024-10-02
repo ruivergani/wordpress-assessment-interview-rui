@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { fetchPostBySlug } from '../../services/api';
+import { fetchSingleMoviePost } from '../../services/api';
 import styled from 'styled-components';
 
 // Define Styled Components
@@ -198,24 +198,27 @@ const SingleComponentBodyText = styled.div`
 `;
 
 export const SingleMoviePost = () => {
-  const { slug } = useParams(); // Get post slug from the URL
-  const [post, setPost] = useState(null);
+  const { slug } = useParams(); // Get the movie slug from the URL
+  const [movie, setMovie] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const getPost = async () => {
+    const getMovie = async () => {
       try {
-        const fetchedPost = await fetchPostBySlug(slug); // Fetch post by slug
-        setPost(fetchedPost);
+        const fetchedMovie = await fetchSingleMoviePost(slug);
+        if (fetchedMovie) {
+          setMovie(fetchedMovie);
+        } else {
+          setMovie(null);
+        }
         setLoading(false);
       } catch (error) {
-        console.error('Error fetching post:', error);
+        console.error('Error fetching movie:', error);
         setLoading(false);
       }
     };
-
-    getPost();
-  }, [slug]); // Re-fetch if the slug changes
+    getMovie();
+  }, [slug]);
 
   // Loading Validation
   if (loading) {
@@ -226,15 +229,15 @@ export const SingleMoviePost = () => {
     );
   }
   // No Posts Validation
-  if (!post) {
+  if (!movie) {
     return (
       <NoPostsContainer>
-        Post Not Found.
+        Movie Not Found.
       </NoPostsContainer>
     );
   }
 
-  const featuredImage = post._embedded?.['wp:featuredmedia']?.[0]?.source_url;
+  const featuredImage = movie._embedded?.['wp:featuredmedia']?.[0]?.source_url;
 
   return (
     <PostSingleComponent>
@@ -242,12 +245,12 @@ export const SingleMoviePost = () => {
         <SectionSingleHero>
           <SingleComponent>
             <SingleComponentText>
-              <h1>{post.title.rendered}</h1>
+              <h1>{movie.title.rendered}</h1>
             </SingleComponentText>
             <SingleComponentBody>
-              {featuredImage && <img src={featuredImage} alt={post.title.rendered} />}
+              {featuredImage && <img src={featuredImage} alt={movie.title.rendered} />}
 
-              <SingleComponentBodyText dangerouslySetInnerHTML={{ __html: post.content.rendered }} />
+              <SingleComponentBodyText dangerouslySetInnerHTML={{ __html: movie.content.rendered }} />
             </SingleComponentBody>
           </SingleComponent>
         </SectionSingleHero>
