@@ -14,20 +14,20 @@ Visit our [README](../README.md#Setup) for setup instructions.
 
 ### Create Content
 
-- [ ] Create 1 sample "Welcome" post and 1 page "Homepage" inside of WordPress.
-- [ ] Create a custom "Movie" post type and create 3 sample Movie posts.
-- [ ] Create a custom "Genre" taxonomy and attach it to the `movie` post type only.
+- [x] Create 1 sample "Welcome" post and 1 page "Homepage" inside of WordPress.
+- [x] Create a custom "Movie" post type and create 3 sample Movie posts.
+- [x] Create a custom "Genre" taxonomy and attach it to the `movie` post type only.
 
 ### Create App
 - [ ] Create a React app with a standard header w/ nav linking to pages, a standard footer, which talks to WordPress REST API. Create the following page in the React app:
   - [ ] Home page - Should show the "Welcome" post only + a link to "Movie" Page
-  - [ ] Movie page - Should show the 3 "Movie" Posts  
+  - [ ] Movie page - Should show the 3 "Movie" Posts
     - Each post should have a featured image, an excerpt and a link to the movie single post page.
     - Bonus points: infinite scroll or pagination.
-- [ ] Add SCSS compiling in and style your React app.
+- [X] Add SCSS compiling in and style your React app.
   - Bonus points: Uglify your JavaScript/SCSS build
 - [ ] Add instructions on requirements, installation and running everything to your README file.
-- [ ] Bonus point: Create a plugin that will add a simple "PRESS ME" CTA to all "Movie" Posts. 
+- [ ] Bonus point: Create a plugin that will add a simple "PRESS ME" CTA to all "Movie" Posts.
 
 
 ## Requirements

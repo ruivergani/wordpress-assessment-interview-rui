@@ -1,12 +1,17 @@
+import React from 'react';
+// Import Router Component
+import { Router } from '../../Router';
+import { BrowserRouter } from 'react-router-dom';
+
 /**
  * App component.
  * @returns {JSXElement}
  */
 const App = () => {
     return (
-        <div className="assessment-app">
-            Assessment app.
-        </div>
+        <BrowserRouter>
+            <Router/>
+        </BrowserRouter>
     )
 }
 

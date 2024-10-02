@@ -2,12 +2,12 @@
 /**
  * Theme functions.
  */
-
 /**
  * Enqueue scripts/styles.
  *
  * @return void
  */
+
 function headless_scripts() {
     wp_enqueue_style( 'headless-style', get_template_directory_uri() . '/style.css', array(), rand() );
 
@@ -21,7 +21,8 @@ function headless_scripts() {
             'assessment/runtime',
             $asset_uri . 'loader.js',
             array(),
-            filemtime($asset_root . 'loader.js')
+            filemtime($asset_root . 'loader.js'),
+            true // Load in footer
         );
     }
 
@@ -62,31 +63,43 @@ function headless_scripts() {
         }
     }
 }
-
 add_action( 'wp_enqueue_scripts', 'headless_scripts' );
+
+// Functions to clean the header
 
 // Removes the Really Simple Discovery (RSD) link from the WordPress header, which is used for external services to communicate with WordPress.
 remove_action('wp_head', 'rsd_link');
+
 // Removes the Windows Live Writer manifest link from the WordPress header, as it's not needed for most websites.
 remove_action('wp_head', 'wlwmanifest_link');
+
 // Removes the relational links for the previous post in a post series, which are generally unnecessary.
 remove_action('wp_head', 'start_post_rel_link', 10, 0);
+
 // Removes adjacent posts relational links, which are used for navigation between posts in the head section.
 remove_action('wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0);
+
 // Removes the extra RSS feed links from the WordPress header (such as the category and comment feed links).
 remove_action('wp_head', 'feed_links_extra', 3);
+
 // Removes the WordPress version number from the site’s header to improve security by obscuring the version in use.
 remove_action('wp_head', 'wp_generator');
+
 // Removes the emoji detection script from the front-end to reduce unnecessary resources being loaded.
 remove_action('wp_head', 'print_emoji_detection_script', 7);
+
 // Removes the emoji detection script from the WordPress admin area to save resources in the back-end.
 remove_action('admin_print_scripts', 'print_emoji_detection_script');
+
 // Removes the emoji-related styles from the front-end to reduce loading additional stylesheets.
 remove_action('wp_print_styles', 'print_emoji_styles');
+
 // Removes the emoji-related styles from the WordPress admin area.
 remove_action('admin_print_styles', 'print_emoji_styles');
+
 // Prevents Advanced Custom Fields (ACF) from removing the WordPress meta box for custom fields, ensuring it remains visible.
 add_filter('acf/settings/remove_wp_meta_box', '__return_false');
+
 
 // Function to disable emojis entirely in both the front-end and admin area.
 function disable_emojis() {
@@ -167,4 +180,3 @@ function create_genre_taxonomy() {
     register_taxonomy( 'genre', array( 'movie' ), $args );
 }
 add_action( 'init', 'create_genre_taxonomy', 0 );
-
