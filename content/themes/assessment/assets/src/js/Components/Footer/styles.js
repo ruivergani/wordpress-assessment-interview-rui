@@ -137,6 +137,12 @@ export const FooterButtonCTA = styled.button`
 export const FooterBottom = styled.footer`
   background-color: #F3F3F5;
   padding-top: 65px;
+  @media (max-width: 991px){
+    padding-top: 45px;
+  }
+  @media (max-width: 576px){
+    padding-top: 30px;
+  }
 `;
 export const FooterContent = styled.div`
   padding-bottom: 40px;
@@ -144,10 +150,19 @@ export const FooterContent = styled.div`
   align-items: flex-start;
   justify-content: space-between;
   width: 100%;
+  @media (max-width: 991px){
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+  }
 `;
 export const FooterLogo = styled.div`
   width: 100%;
   max-width: 200px;
+  @media (max-width: 576px){
+    max-width: 150px;
+  }
 `;
 export const FooterLinksContainer = styled.div`
   width: 100%;
@@ -155,8 +170,14 @@ export const FooterLinksContainer = styled.div`
   display: flex;
   align-items: flex-start;
   gap: 90px;
+  @media (max-width: 991px){
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+  }
 `;
-
 export const FooterColumn = styled.div`
   h4{
     color: #140D30;
@@ -184,8 +205,18 @@ export const FooterColumn = styled.div`
       }
     }
   }
-`;
+  @media (max-width: 991px){
+    h4{
+      margin-bottom: 15px;
+    }
+    ul{
+      gap: 6px;
+      li{
 
+      }
+    }
+  }
+`;
 export const FooterBottomContainer = styled.div`
   width: 100%;
   max-width: 1260px;
@@ -212,6 +243,9 @@ export const FooterDetails = styled.div`
 
   border-top: 1px solid rgba(208, 207, 214, 0.50);
   padding: 44px 0px;
+  @media (max-width: 576px){
+    padding: 30px 0px;
+  }
 
   @media(max-width: 991px){
     display: flex;
@@ -304,7 +338,7 @@ export const FooterContact = styled.div`
     margin-bottom: 8px;
   }
   p{
-    font-weight: 500;
+    font-weight: 400;
     margin-bottom: 10px;
   }
   span{
