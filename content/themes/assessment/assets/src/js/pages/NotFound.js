@@ -1,9 +1,49 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import styled from 'styled-components';
+
+// Images
+import NotFoundBg from '../../../images/bg/not_found.svg';
+
+const NotFoundContainer = styled.div`
+  width: 100%;
+  max-width: 1260px;
+  margin: 0 auto;
+  padding: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  padding: 60px 0px;
+  @media (max-width: 1400px) {
+    padding: 40px 25px;
+  }
+  @media (max-width: 576px) {
+    padding: 30px 15px;
+  }
+
+  a{
+    font-size: 18px;
+    color: #000;
+    &:hover{
+      text-decoration: underline;
+    }
+  }
+`;
+
+const ImageNotFound = styled.img`
+  width: 100%;
+  max-width: 300px;
+  padding: 60px 0px;
+`
 
 export const NotFound = () => {
   return (
-    <div>
-      <h1>here is the not found page</h1>
-    </div>
+    <NotFoundContainer>
+      <ImageNotFound src={NotFoundBg} title='Not Found Image' alt='Not Found Image'></ImageNotFound>
+      <Link to={'/'}>Return to Home Page</Link>
+    </NotFoundContainer>
   );
 };
