@@ -49,29 +49,3 @@ The local WordPress instance will now be accessible at:
    ```bash
    http://localhost:8888
 
-Use the following credentials:
-   ```bash
-   Username: admin
-   Password: admin
-
-### Build Assets
-
-The project uses @wordpress/scripts to build and bundle assets. Here are the commands to build the project:
-   Build assets:
-   ```bash
-   npm run assets:build
-
-   
-### Project Structure
-
-- Theme: The theme files are located in ./content/themes/assessment/.
-- Assets: Source assets (SCSS, JavaScript) are in the ./content/themes/assessment/assets/src/ folder.
-- Build Output: Compiled assets are in the ./content/themes/assessment/assets/build/ folder.
-
-
-
-
-
-
-
-   
