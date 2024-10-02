@@ -13,8 +13,15 @@ export const FooterContainerCTA = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 20px;
   @media (max-width: 1400px) {
     padding: 0px 25px;
+  }
+  @media (max-width: 991px){
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 30px;
   }
   @media (max-width: 576px) {
     padding: 0px 15px;
@@ -24,7 +31,13 @@ export const FooterCTA = styled.div`
   background-color: #067042;
   background-image: url(${backgroundImage});
   background-size: cover;
-  padding: 90px 0px;
+  padding: 80px 0px;
+  @media (max-width: 991px){
+    padding: 40px 0px;
+  }
+  @media (max-width: 576px){
+    padding: 30px 0px;
+  }
 `
 export const FooterContentCTA = styled.div`
   width: 100%;
@@ -34,6 +47,13 @@ export const FooterContentCTA = styled.div`
   align-items: center;
   justify-content: space-between;
   gap: 65px;
+  @media (max-width: 1150px){
+    gap: 20px;
+    max-width: 680px;
+  }
+  @media (max-width: 991px){
+    flex-direction: column;
+  }
 `;
 export const FooterIcon = styled.div`
   width: 100%;
@@ -48,6 +68,10 @@ export const FooterIcon = styled.div`
   padding: 25px;
   svg{
     color: #067042;
+  }
+  @media (max-width: 576px){
+    max-width: 76px;
+    max-height: 76px;
   }
 `;
 export const FooterTextCTA = styled.div`
@@ -66,6 +90,22 @@ export const FooterTextCTA = styled.div`
   span{
     font-size: 16px;
     font-weight: 400;
+  }
+  @media (max-width: 1150px){
+    p{
+      font-size: 24px;
+    }
+  }
+  @media (max-width: 991px){
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  @media (max-width: 576px){
+    p{
+      font-size: 22px;
+      max-width: 320px;
+    }
   }
 `
 export const FooterButtonCTA = styled.button`
@@ -90,9 +130,12 @@ export const FooterButtonCTA = styled.button`
     filter: brightness(0.9);
     border-color: rgba(10, 180, 99, 0.70);
   }
+  @media (max-width: 576px){
+    height: 48px;
+  }
 `
 export const FooterBottom = styled.footer`
   background-color: #F3F3F5;
   padding-top: 65px;
-  
+
 `;
