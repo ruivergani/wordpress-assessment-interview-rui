@@ -2,12 +2,12 @@ import styled from 'styled-components';
 
 export const NavigationList = styled.ul`
   width: 100%;
-  max-width: 100px;
+  max-width: 200px;
 
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 20px;
+  gap: 40px;
 
   li{
     a{

@@ -2,9 +2,13 @@ import { FooterContainer } from './styles';
 
 const Footer = () => {
   return (
-    <FooterContainer>
-      Footer here
-    </FooterContainer>
+    <>
+
+      <FooterContainer>
+        Footer here
+      </FooterContainer>
+    </>
+
   );
 };
 
