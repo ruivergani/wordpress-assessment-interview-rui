@@ -18,21 +18,24 @@ const HomeComponent = styled.div`
     height: 472.28px;
     right: -354px;
     top: -163px;
-    border-radius: 999px !important;
     opacity: 0.2;
     background: #067042;
     filter: blur(77.5px);
+    z-index: 1;
   }
   &::before{
+    content: "";
     position: absolute;
     width: 502px;
     height: 472.28px;
     left: -367px;
     bottom: -192.99px;
-    border-radius: 999px !important;
     opacity: 0.2;
     background: #067042;
     filter: blur(77.5px);
+  }
+  @media (max-width: 576px){
+    padding: 30px 0px;
   }
 `;
 const HomeContainer = styled.div`
@@ -83,6 +86,10 @@ const NoPostsContainer = styled.div`
 `;
 const SectionHero = styled.div`
   width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3 !important;
 `;
 const PostComponent = styled(Link) `
   width: 100%;
@@ -90,12 +97,13 @@ const PostComponent = styled(Link) `
   align-items: center;
   justify-content: space-between;
   gap: 50px;
+  z-index: 3 !important;
   &:hover{
     img{
       transform: scale(1.2);
     }
   }
-  div{
+  .img{
     overflow: hidden;
     width: 100%;
     height: 100%;
@@ -111,6 +119,31 @@ const PostComponent = styled(Link) `
       border-radius: 10px;
       transition: all .3s;
       object-fit: cover;
+    }
+  }
+  @media (max-width: 991px){
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    .img{
+      max-width: 100%;
+      max-height: 250px;
+      img{
+        max-width: 100%;
+        max-height: 250px;
+      }
+    }
+  }
+  @media (max-width: 576px){
+    gap: 15px;
+    .img{
+      max-width: 100%;
+      max-height: 150px;
+      img{
+        max-width: 100%;
+        max-height: 150px;
+      }
     }
   }
 `;
@@ -143,6 +176,24 @@ const PostComponentText = styled.div`
     &:hover{
       color: #067042;
       text-decoration: underline;
+    }
+  }
+  @media (max-width: 991px){
+    text-align: center;
+    h1{
+      font-size: 28px;
+    }
+    p{
+      padding: 12px 0px;
+    }
+    p, span{
+      font-size: 16px;
+    }
+  }
+  @media (max-width: 576px){
+    text-align: center;
+    h1{
+      font-size: 24px;
     }
   }
 `;
@@ -197,7 +248,7 @@ export const Home = () => {
         <SectionHero>
           <PostComponent to={`/post/${post.id}`}>
             {/* Display featured image if available */}
-            <div>
+            <div className='img'>
               {featuredImage && <img src={featuredImage} alt={post.title.rendered} />}
             </div>
             <PostComponentText>
