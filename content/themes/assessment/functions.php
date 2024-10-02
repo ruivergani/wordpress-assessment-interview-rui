@@ -152,12 +152,14 @@ function create_movie_post_type() {
         'menu_name'             => __( 'Movies', 'text_domain' ),
         'name_admin_bar'        => __( 'Movie', 'text_domain' ),
     );
+
     $args = array(
         'label'                 => __( 'Movie', 'text_domain' ),
         'supports'              => array( 'title', 'editor', 'excerpt', 'thumbnail' ),
         'public'                => true,
         'has_archive'           => true,
         'rewrite'               => array( 'slug' => 'movies' ),
+        'show_in_rest'          => true,  // Enable REST API access
     );
     register_post_type( 'movie', $args );
 }

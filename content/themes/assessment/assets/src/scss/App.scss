@@ -1,4 +1,43 @@
-// Default Configuration
-.assessment-app {
-    //
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+    box-sizing: border-box;
+    border: none;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+}
+html,
+body{
+    font-size: 62.5%;
+    scroll-behavior: smooth;
+    @media (max-width: 1440px){ //macbook small size
+        font-size: 60%;
+    }
+    @media (max-width: 576px){ // mobile size
+        font-size: 58%;
+    }
+}
+img{
+    width:100%;
+    max-width: 100%;
+}
+button{
+    background-color: transparent;
+    cursor: pointer;
+}
+p{
+    word-wrap: break-word;
+}
+@mixin flex($direction, $align, $justify){
+    display: flex;
+    flex-direction: $direction;
+    align-items: $align;
+    justify-content: $justify;
+}
+@mixin responsive($screenWidth){
+    @media(max-width: $screenWidth){
+        @content;
+    }
 }

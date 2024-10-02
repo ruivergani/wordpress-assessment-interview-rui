@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { NavigationList } from './styles';
 
 export function Navigation() {
   {/*
@@ -7,16 +8,13 @@ export function Navigation() {
     - Replaces anchor <a> tags
   */}
   return(
-    <ul>
+    <NavigationList>
       <li>
-        <Link to="/">Home</Link>
+        <Link to="/movies">Movie</Link>
       </li>
       <li>
         <Link to="/about">About</Link>
       </li>
-      <li>
-        <Link to="/movies">Movie</Link>
-      </li>
-    </ul>
+    </NavigationList>
   )
 }
