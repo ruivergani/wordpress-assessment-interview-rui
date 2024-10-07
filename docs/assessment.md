@@ -27,7 +27,7 @@ Visit our [README](../README.md#Setup) for setup instructions.
 - [X] Add SCSS compiling in and style your React app.
   - Bonus points: Uglify your JavaScript/SCSS build
 - [X] Add instructions on requirements, installation and running everything to your README file.
-- [ ] Bonus point: Create a plugin that will add a simple "PRESS ME" CTA to all "Movie" Posts.
+- [X] Bonus point: Create a plugin that will add a simple "PRESS ME" CTA to all "Movie" Posts.
 
 
 ## Requirements

@@ -150,6 +150,11 @@ function enable_featured_images_for_posts() {
 }
 add_action( 'after_setup_theme', 'enable_featured_images_for_posts' );
 
+function add_cors_http_header(){
+    header("Access-Control-Allow-Origin: *");
+}
+add_action('init','add_cors_http_header');
+
 // Register Custom Post Type Movie
 function create_movie_post_type() {
     $labels = array(

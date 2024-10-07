@@ -36,3 +36,20 @@ export const fetchSingleMoviePost = async (slug) => {
   const movies = await response.json();
   return movies.length > 0 ? movies[0] : null; // Return the first matching post
 };
+export const fetchMoviesWithPagination = async (page = 1, perPage = 10) => {
+  try {
+    const response = await fetch(`${API_URL}/movie?_embed&per_page=${perPage}&page=${page}`);
+    if (!response.ok) {
+      throw new Error('Failed to fetch movies');
+    }
+    const data = await response.json();
+    const totalPages = response.headers.get('X-WP-TotalPages'); // Total pages available
+    return {
+      movies: Array.isArray(data) ? data : [],
+      totalPages: parseInt(totalPages, 10),
+    };
+  } catch (error) {
+    console.error('Error fetching movies:', error);
+    return { movies: [], totalPages: 0 };
+  }
+};

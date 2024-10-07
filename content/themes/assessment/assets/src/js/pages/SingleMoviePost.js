@@ -33,6 +33,7 @@ const PostSingleComponent = styled.div`
     opacity: 0.2;
     background: #067042;
     filter: blur(77.5px);
+    z-index: -1;
   }
   @media (max-width: 576px){
     padding: 30px 0px;
