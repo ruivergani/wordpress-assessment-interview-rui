@@ -9,6 +9,7 @@
     "@wordpress/env": "^5.8.0",
     "@wordpress/scripts": "^26.12.0",
     "css-loader": "^7.1.2",
+    "css-minimizer-webpack-plugin": "^7.0.0",
     "mini-css-extract-plugin": "^2.9.1",
     "sass": "^1.79.4",
     "sass-loader": "^16.0.2",
@@ -20,9 +21,9 @@
     "npm": "~8"
   },
   "scripts": {
-    "assets:build": "wp-scripts build --webpack-src-dir=./content/themes/assessment/assets/src/ --output-path=./content/themes/assessment/assets/build",
-    "assets:watch:hot": "wp-scripts start --webpack-src-dir=./content/themes/assessment/assets/src/ --output-path=./content/themes/assessment/assets/build --hot",
-    "assets:watch": "wp-scripts start --webpack-src-dir=./content/themes/assessment/assets/src/ --output-path=./content/themes/assessment/assets/build",
+    "assets:build": "wp-scripts build --webpack-src-dir=./content/themes/assessment/assets/src/ --output-path=./content/themes/assessment/assets/build --config ./webpack.config.js",
+    "assets:watch:hot": "wp-scripts start --webpack-src-dir=./content/themes/assessment/assets/src/ --output-path=./content/themes/assessment/assets/build --hot --config ./webpack.config.js",
+    "assets:watch": "wp-scripts start --webpack-src-dir=./content/themes/assessment/assets/src/ --output-path=./content/themes/assessment/assets/build --config ./webpack.config.js",
     "env:clean": "wp-env clean all",
     "env:destroy": "wp-env destroy",
     "env:init": "wp-env start -- --update",
